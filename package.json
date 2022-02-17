@@ -1,0 +1,21 @@
+{
+  "name": "container-server",
+  "version": "0.0.0",
+  "private": true,
+  "bin": "./app.js",
+  "scripts": {
+    "start": "node ./app",
+    "pkg": "rm output/* || pkg . -t node16-macos-x64,node16-linux-x64,node16-win-x64 --out-path output/"
+  },
+  "pkg": {
+    "assets": ["dist/**/*"]
+  },
+  "dependencies": {
+    "koa": "~2.13.4",
+    "koa-router": "~10.1.1",
+    "koa-body": "~4.2.0",
+    "koa-static": "~5.0.0",
+    "koa-logger": "~3.2.1",
+    "koa-history-api-fallback": "~1.0.0"
+  }
+}
