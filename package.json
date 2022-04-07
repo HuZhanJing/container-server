@@ -5,7 +5,10 @@
   "bin": "./app.js",
   "scripts": {
     "start": "node ./app",
-    "pkg": "rm output/* || pkg . -t node16-macos-x64,node16-linux-x64,node16-win-x64 --out-path output/"
+    "pkg-mac": "rm -r output/* && pkg . -t node16-macos-x64 --out-path output/container-server-macos && cp -r shells output/container-server-macos && cd output/container-server-macos && zip -r container.zip *",
+    "pkg-linux": "rm -r output/* && pkg . -t node16-linux-x64 --out-path output/container-server-linux && cp -r shells output/container-server-linux && cd output/container-server-linux && zip -r container.zip *",
+    "pkg-win": "rm -r output/* && pkg . -t node16-win-x64 --out-path output/container-server-win && cp -r shells output/container-server-win && cd output/container-server-win && zip -r container.zip *",
+    "pkg-all": "rm -r output/* && pkg . -t node16-macos-x64,node16-linux-x64,node16-win-x64 --out-path output/"
   },
   "pkg": {
     "assets": ["dist/**/*"]
@@ -16,6 +19,7 @@
     "koa-body": "~4.2.0",
     "koa-static": "~5.0.0",
     "koa-logger": "~3.2.1",
-    "koa-history-api-fallback": "~1.0.0"
+    "koa-history-api-fallback": "~1.0.0",
+    "log4js": "~6.4.4"
   }
 }
